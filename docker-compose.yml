@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "2053:2053"
+    depends_on:
+      - question-service
+      - player-service
+      - game-logic-service
+
+  question-service:
+    build: ./question-service
+    ports:
+      - "2057:2057"
+
+  game-logic-service:
+    build: ./game-logic-service
+    ports:
+      - "2054:2054"
+
+  player-service:
+    build: ./player-service
+    ports:
+      - "2056:2056"
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "2055:2055"
